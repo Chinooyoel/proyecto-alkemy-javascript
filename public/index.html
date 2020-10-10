@@ -1,9 +1,101 @@
 <!DOCTYPE html>
 <html>
     <head>
-
+        <link href="css/estilo.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <script src="js/codigojs.js"></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Challenge Alkemy</title>
     </head>
     <body>
-        
+        <div class="container">
+            <nav>
+                <button class="btn btn-success" id="btn_openHome">Inicio</button>
+                <button class="btn btn-success" id="btn_showList">Ver operaciones</button>
+            </nav>
+            <div id="container_home" class="row">
+                <div class="col-md-6">
+                    <h1>Balance Actual</h1>
+                    <h2 id="result_home"></h2>
+                    <h3>Crear operacion</h3>
+                    <div id="container_updateRegistro">
+                        <form method="POST" id="formRegister" enctype="application/x-www-form-urlencoded" action="/register-operation">
+                            <div class="form-group">
+                                <label id="concept">Concepto</label>
+                                <input type="text" id="concept" name="concept" class="form-control"/>
+                            </div>
+                            <div class="form-group">
+                                <label id="type_operation">Tipo de operacion</label>
+                                <select name="type_operation_id" class="form-control" id="type_operation">
+                                    <option value="1">Ingreso</option>
+                                    <option value="2">Egreso</option>
+                                </select>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label id="amount">Monto</label>
+                                    <input type="number" id="amount" name="amount" class="form-control" min=1/>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label id="date_operation">Fecha</label>
+                                    <input type="date" id="date_operation" name="date_operation" class="form-control"/>
+                                </div>
+                            </div>
+                            <div class="alert alert-danger" role="alert" id="alertRegister">
+                                Todos los campos son obligatorios
+                            </div>
+                            <button type="submit" class="btn btn-success">Registrar</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="table-responsive">
+                        <table id="listOperations_home" class="table">
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div id="container_listOperations" class="row">
+                <div class="col">
+                    <h2>Ingresos</h2>
+                    <div class="table-responsive">
+                        <table id="listOperations_income" class="table">
+
+                        </table>
+                    </div>
+                </div>
+                <div class="col">
+                    <h2>Egresos</h2>
+                    <div class="table-responsive">
+                        <table id="listOperations_expenses" class="table">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div id="container_updateOperation">
+                <form enctype="application/x-www-form-urlencoded" method="post" id="formUpdate">
+                    <div class="form-group">
+                        <label id="concept">Concepto</label>
+                        <input type="text" id="concept" name="concept" class="form-control"/>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label id="amount">Monto</label>
+                            <input type="number" id="amount" name="amount" class="form-control" min='1'/>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label id="date_operation">Fecha</label>
+                            <input type="date" id="date_operation" name="date_operation" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="alert alert-danger" role="alert" id="alertUpdate">
+                        Todos los campos son obligatorios
+                    </div>
+                    <button type="submit" class="btn btn-success">Actualizar</button>
+                </form>
+            </div>
+        </div>
     </body>
 </html>

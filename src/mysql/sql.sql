@@ -9,6 +9,7 @@ CREATE TABLE type_operation (
 
 CREATE TABLE operation (
     id INT AUTO_INCREMENT PRIMARY KEY,
+    concept VARCHAR(50),
     amount DECIMAL(10,2),
     date_operation DATE,
     type_operation_id TINYINT,
